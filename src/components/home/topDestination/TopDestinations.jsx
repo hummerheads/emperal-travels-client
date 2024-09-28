@@ -2,7 +2,7 @@ const TopDestinations = () => {
     return (
         <div>
             <div className="flex flex-col md:py-12 px-4 md:px-96 items-center my-5">
-                <h1 className="text-5xl font-bold text-left text-gray-800 mb-5">Discover Our Top Destinations</h1>
+                <h1 className="text-2xl uppercase md:text-5xl font-bold text-left text-gray-800 mb-5">Discover Our Top Destinations</h1>
                 <p className="text-left text-gray-600 mb-5 md:mb-12">
                     Embark on an unforgettable journey as you explore our handpicked selection of top travel destinations! Whether you&apos;re seeking adventure, relaxation, or cultural experiences, we have something for everyone. Dive into breathtaking landscapes, vibrant cities, and hidden gems that await your discovery. Let us guide you to your next dream getaway!
                 </p>

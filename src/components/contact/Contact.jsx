@@ -1,7 +1,7 @@
 const Contact = () => {
     return (
         <div className="">
-            <div className="bg-[url('/contact.png')] md:h-screen h-60 w-screen flex items-center justify-center">
+            <div className="bg-[url('/contact.png')] h-[50vh] w-screen flex items-center justify-center">
                 <h1 className="text-center text-4xl md:text-8xl text-white font-black">Contact Us</h1>
             </div>
             <div className="flex flex-col md:flex-row items-center justify-center py-10 md:gap-10">

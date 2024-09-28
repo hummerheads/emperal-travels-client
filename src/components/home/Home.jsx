@@ -1,5 +1,7 @@
 import Guide from "../guide/Guide";
+import Activities from "./activities/Activities";
 import Banner from "./banner/Banner";
+import Instagram from "./instagram/Instagram";
 import TopDestinations from "./topDestination/TopDestinations";
 
 const Home = () => {
@@ -7,7 +9,9 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <TopDestinations></TopDestinations>
+            <Activities></Activities>
             <Guide></Guide>
+            <Instagram></Instagram>
             
            
         </div>
