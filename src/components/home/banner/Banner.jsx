@@ -27,12 +27,12 @@ const Banner = () => {
             <div className="md:mb-4 flex justify-between md:mt-10 items-center">
                 <div>
                 <span className="text-lg">Starting From:</span>
-                <span className="text-lg md:text-3xl font-bold text-green-400 ml-2">$240</span>
-                <span className="text-lg line-through ml-2">$380</span>
+                <span className="text-xl md:text-3xl font-bold text-green-400 ml-2">$240</span>
+                <span className="text-sm line-through ml-2">$380</span>
                 <span className="text-sm block">TAXES INCLUDED</span>
                 </div>
                 <div>
-                <button className="bg-green-500 text-white md:px-4 md:py-2 rounded">Book A Trip</button>
+                <button className="bg-green-500 text-white md:px-4 md:py-2 rounded p-1">Book A Trip</button>
                 </div>
             </div>
         </div>
