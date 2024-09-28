@@ -30,9 +30,9 @@ const Navbar = () => {
           <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">ALL TOURIST SPOTS</Link>
           <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">ADD TOURISTS SPOT</Link>
           <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">MY LIST</Link>
-          <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">CONTACT</Link>
-          <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">LOGIN</Link>
-          <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">REGISTER</Link>
+          <Link to={'/contact'} className="text-white hover:text-[#4CAF50] text-lg font-bold">CONTACT</Link>
+          <Link to={'/login'} className="text-white hover:text-[#4CAF50] text-lg font-bold">LOGIN</Link>
+          <Link to={'/register'} className="text-white hover:text-[#4CAF50] text-lg font-bold">REGISTER</Link>
         </div>
       </nav>
 
@@ -42,9 +42,9 @@ const Navbar = () => {
           <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">ALL TOURIST SPOTS</Link>
           <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">ADD TOURISTS SPOT</Link>
           <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">MY LIST</Link>
-          <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">CONTACT</Link>
-          <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">LOGIN</Link>
-          <Link className="text-white hover:text-[#4CAF50] text-lg font-bold">REGISTER</Link>
+          <Link to={'/contact'} className="text-white hover:text-[#4CAF50] text-lg font-bold">CONTACT</Link>
+          <Link to={'/login'} className="text-white hover:text-[#4CAF50] text-lg font-bold">LOGIN</Link>
+          <Link to={'/register'} className="text-white hover:text-[#4CAF50] text-lg font-bold">REGISTER</Link>
         </div>
       )}
     </div>
