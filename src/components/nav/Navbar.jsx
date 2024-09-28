@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="bg-[#1a1a1a] p-2 flex flex-col md:flex-row items-center justify-center md:justify-between rounded-[20px] md:mx-10 md:px-10 md:py-5">
+      <nav className="bg-[#1a1a1a] p-2 flex flex-col md:flex-row items-center justify-center md:justify-between  md:px-10 md:py-5">
         <div className="flex items-center justify-between w-full md:w-auto">
           <img src="Emperal.svg" alt="" className="h-10 mr-2" />
           <span className="text-white text-lg font-bold">EMPERAL TRAVELS</span>
