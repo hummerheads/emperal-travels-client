@@ -46,8 +46,10 @@ const Login = () => {
                     Login
                 </button>
             </form>
-            <button onClick={handleGoogleLogin} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                Login with Google
+            <button onClick={handleGoogleLogin} className="mt-4 bg-white text-gray-800 px-4 py-2 rounded hover:bg-blue-600">
+                <div className='flex items-center'>
+                <img className='w-10' src="google.png" alt="" /><span>Login with Google</span>
+                </div>
             </button>
             <p className="mt-4">
                 Don&apos;t have an account? 

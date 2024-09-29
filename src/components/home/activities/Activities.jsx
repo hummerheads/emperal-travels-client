@@ -28,8 +28,8 @@ const Activities = () => {
             <h3 className="text-sm text-gray-600 pb-10 text-center md:px-96 px-4">
                 Dive into the excitement with our selection of the finest tour activities! Whether you&apos;re soaring through the skies while paragliding over breathtaking landscapes, or feeling the rush of adrenaline as you zip-line through lush forests...
             </h3>
-
-            <div className="flex justify-center space-x-4 md:pb-10 mb-5 flex-wrap">
+            <div className='md:flex md:gap-10 md:items-center md:justify-center '>
+            <div className="flex md:grid gap-1 justify-center  md:pb-10 mb-5 flex-wrap">
                 {activitiesData.map((activity, index) => (
                     <button 
                         key={index} 
@@ -41,15 +41,18 @@ const Activities = () => {
                 ))}
             </div>
 
-            <Slider {...settings}>
+            <Slider {...settings} className="md:w-1/2">
                 <div className="flex justify-center">
                     <img 
                         src={activitiesData[selectedActivityIndex].image} 
                         alt={activitiesData[selectedActivityIndex].title} 
-                        className="rounded-lg w-full md:w-2/3 mx-auto" 
+                        className="rounded-lg w-full md:w-full" 
                     />
                 </div>
             </Slider>
+            </div>
+
+
         </div>
     );
 };

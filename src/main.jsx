@@ -10,6 +10,10 @@ import Login from './components/login/Login';
 import Root from './components/root/Root';
 import Register from './components/register/Register';
 import Contact from './components/contact/Contact';
+import AllTouristSpots from './components/touristsSpots/AllTouristSpots';
+import AddTouristSpot from './components/touristsSpots/AddTouristSpot';
+import TouristSpot from './components/touristsSpots/touristSpot';
+import Update from './components/touristsSpots/Update';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +22,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-    element: <Home></Home>
+    element: <Home></Home>,
+    
       },
       {
         path: "/login",
@@ -32,6 +37,28 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>
       },
+      {
+        path: "/all-tourist-spots",
+        element: <AllTouristSpots></AllTouristSpots>,
+        loader: () => fetch('http://localhost:5000/all-tourist-spots'),
+      },
+      {
+        path: "/all-tourist-spots/:id",
+        element: <TouristSpot></TouristSpot>,
+        loader: () => fetch('http://localhost:5000/all-tourist-spots'),
+
+      },
+      {
+        path: "/add-tourist-spot",
+        element: <AddTouristSpot></AddTouristSpot>
+      },
+      {
+        path: "/update/:id",
+        element: <Update></Update>,
+        loader: ({params}) => fetch(`http://localhost:5000/all-tourist-spots/${params.id}`),
+
+      },
+
     ]
   }
 ]);

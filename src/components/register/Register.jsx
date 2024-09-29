@@ -86,6 +86,11 @@ const Register = () => {
                 <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded w-full hover:bg-green-600">
                     Register
                 </button>
+                <button className="mt-4 bg-green-400 text-gray-800 w-full  px-4 py-1 rounded hover:bg-blue-600">
+                <div className='flex items-center justify-center'>
+                <img className='w-10' src="google.png" alt="" /><span>Login with Google</span>
+                </div>
+            </button>
             </form>
             <p className="mt-4">
                 Already have an account? 
