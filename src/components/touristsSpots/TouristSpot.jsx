@@ -22,7 +22,7 @@ const TouristSpot = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/all-tourist-spots/${id}`, {
+        fetch(`https://emperal-travels-server-6hhgduu08.vercel.app/all-tourist-spots/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

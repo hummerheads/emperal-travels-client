@@ -8,12 +8,12 @@ import TopDestinations from "./topDestination/TopDestinations";
 const Home = () => {
     return (
         <div>
-            {/* <Banner></Banner> */}
-            {/* <TopDestinations></TopDestinations> */}
-            {/* <Activities></Activities> */}
-            {/* <Guide></Guide> */}
-            {/* <Reviews></Reviews> */}
-            {/* <Instagram></Instagram> */}
+            <Banner></Banner>
+            <TopDestinations></TopDestinations>
+            <Activities></Activities>
+            <Guide></Guide>
+            <Reviews></Reviews>
+            <Instagram></Instagram>
             
            
         </div>

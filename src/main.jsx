@@ -40,12 +40,12 @@ const router = createBrowserRouter([
       {
         path: "/all-tourist-spots",
         element: <AllTouristSpots></AllTouristSpots>,
-        loader: () => fetch('http://localhost:5000/all-tourist-spots'),
+        loader: () => fetch('https://emperal-travels-server-6hhgduu08.vercel.app/all-tourist-spots'),
       },
       {
         path: "/all-tourist-spots/:id",
         element: <TouristSpot></TouristSpot>,
-        loader: () => fetch('http://localhost:5000/all-tourist-spots'),
+        loader: () => fetch('https://emperal-travels-server-6hhgduu08.vercel.app/all-tourist-spots'),
 
       },
       {
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <Update></Update>,
-        loader: ({params}) => fetch(`http://localhost:5000/all-tourist-spots/${params.id}`),
+        loader: ({params}) => fetch(`https://emperal-travels-server-6hhgduu08.vercel.app/all-tourist-spots/${params.id}`),
 
       },
 

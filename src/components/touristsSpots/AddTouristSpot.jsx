@@ -1,6 +1,6 @@
-import { withSwal } from 'react-sweetalert2';
+import Swal from 'react-sweetalert2';
 
-const AddTouristSpot = ({ swal }) => {
+const AddTouristSpot = () => {
     const handleAddTouristSpot = e => {
         e.preventDefault();
         const form = e.target;
@@ -33,7 +33,7 @@ const AddTouristSpot = ({ swal }) => {
 
         console.log(newTouristSpot);
 
-        fetch('http://localhost:5000/add-tourist-spot', {
+        fetch('https://emperal-travels-server-6hhgduu08.vercel.app/add-tourist-spot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newTouristSpot)
@@ -42,7 +42,7 @@ const AddTouristSpot = ({ swal }) => {
         .then(data => {
             console.log(data);
             if (data.insertedId) {
-                swal.fire({
+                Swal.fire({
                     title: 'Success!',
                     text: 'Tourist Spot added successfully!',
                     icon: 'success',
@@ -51,7 +51,7 @@ const AddTouristSpot = ({ swal }) => {
                 // Reset the form after submission
                 form.reset();
             } else {
-                swal.fire({
+                Swal.fire({
                     title: 'Error!',
                     text: 'There was an issue adding the tourist spot.',
                     icon: 'error',
@@ -61,7 +61,7 @@ const AddTouristSpot = ({ swal }) => {
         })
         .catch(error => {
             console.error('Error:', error);
-            swal.fire({
+            Swal.fire({
                 title: 'Error!',
                 text: 'There was an error connecting to the server.',
                 icon: 'error',
@@ -164,5 +164,4 @@ const AddTouristSpot = ({ swal }) => {
    );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
-export default withSwal(AddTouristSpot);
+export default AddTouristSpot;
