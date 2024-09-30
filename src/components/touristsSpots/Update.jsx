@@ -39,7 +39,7 @@ const Update = () => {
 
         console.log(updatedTouristSpot);
 
-        fetch(`https://emperal-travels-server-6hhgduu08.vercel.app/all-tourist-spots/${_id}`, {
+        fetch(`https://emperal-travels-server.vercel.app/all-tourist-spots/${_id}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(updatedTouristSpot)

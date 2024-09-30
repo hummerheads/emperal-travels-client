@@ -14,6 +14,9 @@ import AllTouristSpots from './components/touristsSpots/AllTouristSpots';
 import AddTouristSpot from './components/touristsSpots/AddTouristSpot';
 import TouristSpot from './components/touristsSpots/touristSpot';
 import Update from './components/touristsSpots/Update';
+import { AuthProvider } from './components/authProvider/AuthProvider';
+import MyList from './components/mylist/MyList';
+import Profile from './components/profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -38,14 +41,22 @@ const router = createBrowserRouter([
         element: <Contact></Contact>
       },
       {
+        path: "/my-list",
+        element: <MyList></MyList>
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>
+      },
+      {
         path: "/all-tourist-spots",
         element: <AllTouristSpots></AllTouristSpots>,
-        loader: () => fetch('https://emperal-travels-server-6hhgduu08.vercel.app/all-tourist-spots'),
+        loader: () => fetch('https://emperal-travels-server.vercel.app/all-tourist-spots'),
       },
       {
         path: "/all-tourist-spots/:id",
         element: <TouristSpot></TouristSpot>,
-        loader: () => fetch('https://emperal-travels-server-6hhgduu08.vercel.app/all-tourist-spots'),
+        loader: () => fetch('https://emperal-travels-server.vercel.app/all-tourist-spots'),
 
       },
       {
@@ -55,7 +66,7 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <Update></Update>,
-        loader: ({params}) => fetch(`https://emperal-travels-server-6hhgduu08.vercel.app/all-tourist-spots/${params.id}`),
+        loader: ({params}) => fetch(`https://emperal-travels-server.vercel.app/all-tourist-spots/${params.id}`),
 
       },
 
@@ -65,6 +76,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
     </StrictMode>,
 )

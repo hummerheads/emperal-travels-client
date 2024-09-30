@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import Hamburger from 'hamburger-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../authProvider/AuthProvider'; // Import useAuth
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const [isAvatarDropdownOpen, setIsAvatarDropdownOpen] = useState(false); // State for avatar dropdown
+  const { user, logout } = useAuth(); // Get user info and logout function from Auth context
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -20,6 +23,14 @@ const Navbar = () => {
     setIsDropdownOpen(false);
   };
 
+  const toggleAvatarDropdown = () => {
+    setIsAvatarDropdownOpen(!isAvatarDropdownOpen);
+  };
+
+  const closeAvatarDropdown = () => {
+    setIsAvatarDropdownOpen(false);
+  };
+
   return (
     <div>
       <nav className="bg-[#1a1a1a] p-2 flex flex-col md:flex-row items-center justify-center md:justify-between md:px-10 md:py-5">
@@ -29,7 +40,7 @@ const Navbar = () => {
         </div>
 
         <button 
-          className=" md:hidden text-white bg-[#4CAF50] rounded-full" 
+          className="md:hidden text-white bg-[#4CAF50] rounded-full" 
           onClick={toggleMenu}
         >
             <Hamburger />
@@ -69,8 +80,36 @@ const Navbar = () => {
 
           <Link to={'/my-list'} className="text-white hover:text-[#4CAF50] text-md font-bold">MY LIST</Link>
           <Link to={'/contact'} className="text-white hover:text-[#4CAF50] text-md font-bold">CONTACT</Link>
-          <Link to={'/login'} className="text-white hover:text-[#4CAF50] text-md font-bold">LOGIN</Link>
-          <Link to={'/register'} className="text-white hover:text-[#4CAF50] text-md font-bold">REGISTER</Link>
+
+          {/* Conditional Rendering for Login/Register or Profile Picture */}
+          {user ? (
+            <div className="relative flex items-center">
+              {/* Display User's Profile Picture */}
+              <img 
+                src={user.photoURL} 
+                alt="Profile" 
+                className="h-8 w-8 rounded-full mr-2 cursor-pointer" 
+                onClick={toggleAvatarDropdown} // Toggle avatar dropdown on click
+              />
+              {isAvatarDropdownOpen && (
+                <div className="absolute right-0 bg-[#1a1a1a] rounded-lg shadow-lg mt-2 p-2 z-10">
+                  <Link to="/profile" onClick={closeAvatarDropdown} className="block text-white hover:text-[#4CAF50] text-md font-bold mb-1">
+                    My Profile
+                  </Link>
+                  <hr className="mb-1" />
+                  <button onClick={() => { logout(); closeAvatarDropdown(); }} className="block w-full text-left text-white hover:text-[#4CAF50] text-md font-bold">
+                    Logout
+                  </button>
+                </div>
+              )}
+              <span className="text-white">{user.displayName || "User"}</span>
+            </div>
+          ) : (
+            <>
+              <Link to={'/login'} className="text-white hover:text-[#4CAF50] text-md font-bold">LOGIN</Link>
+              <Link to={'/register'} className="text-white hover:text-[#4CAF50] text-md font-bold">REGISTER</Link>
+            </>
+          )}
         </div>
       </nav>
 
@@ -109,8 +148,36 @@ const Navbar = () => {
 
           <Link to={'/my-list'} className="text-white hover:text-[#4CAF50] text-sm font-bold">MY LIST</Link>
           <Link to={'/contact'} className="text-white hover:text-[#4CAF50] text-sm font-bold">CONTACT</Link>
-          <Link to={'/login'} className="text-white hover:text-[#4CAF50] text-sm font-bold">LOGIN</Link>
-          <Link to={'/register'} className="text-white hover:text-[#4CAF50] text-sm font-bold">REGISTER</Link>
+
+          {/* Conditional Rendering for Login/Register or Profile Picture in mobile view */}
+          {user ? (
+            <div className="relative flex items-center">
+              {/* Display User's Profile Picture */}
+              <img 
+                src={user.photoURL} 
+                alt="Profile" 
+                className="h-10 w-10 rounded-full mr-2 cursor-pointer" 
+                onClick={toggleAvatarDropdown}
+              />
+              {isAvatarDropdownOpen && (
+                <div className="absolute right-0 bg-[#1a1a1a] rounded-lg shadow-lg mt-2 p-2 z-10">
+                  <Link to="/profile" onClick={closeAvatarDropdown} className="block text-white hover:text-[#4CAF50] text-md font-bold mb-1">
+                    My Profile
+                  </Link>
+                  <hr className="mb-1" />
+                  <button onClick={() => { logout(); closeAvatarDropdown(); }} className="block w-full text-left text-white hover:text-[#4CAF50] text-md font-bold">
+                    Logout
+                  </button>
+                </div>
+              )}
+              <span className="text-white">{user.displayName || "User"}</span>
+            </div>
+          ) : (
+            <>
+              <Link to={'/login'} className="text-white hover:text-[#4CAF50] text-sm font-bold">LOGIN</Link>
+              <Link to={'/register'} className="text-white hover:text-[#4CAF50] text-sm font-bold">REGISTER</Link>
+            </>
+          )}
         </div>
       )}
     </div>

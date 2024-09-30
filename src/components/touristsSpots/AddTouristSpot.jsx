@@ -33,7 +33,7 @@ const AddTouristSpot = () => {
 
         console.log(newTouristSpot);
 
-        fetch('https://emperal-travels-server-6hhgduu08.vercel.app/add-tourist-spot', {
+        fetch('https://emperal-travels-server.vercel.app/add-tourist-spot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newTouristSpot)
