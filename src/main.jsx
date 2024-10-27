@@ -12,7 +12,7 @@ import Register from './components/register/Register';
 import Contact from './components/contact/Contact';
 import AllTouristSpots from './components/touristsSpots/AllTouristSpots';
 import AddTouristSpot from './components/touristsSpots/AddTouristSpot';
-import TouristSpot from './components/touristsSpots/touristSpot';
+import TouristSpot from './components/touristsSpots/TouristSpot';
 import Update from './components/touristsSpots/Update';
 import { AuthProvider } from './components/authProvider/AuthProvider';
 import MyList from './components/mylist/MyList';

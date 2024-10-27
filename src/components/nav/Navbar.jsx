@@ -35,7 +35,7 @@ const Navbar = () => {
     <div>
       <nav className="bg-[#1a1a1a] p-2 flex flex-col md:flex-row items-center justify-center md:justify-between md:px-10 md:py-5">
         <div className="flex items-center justify-between w-full md:w-auto">
-          <img src="/Emperal.svg" alt="" className="h-10 mr-2" />
+          <img src="/Emperal.png" alt="" className="h-10 mr-2" />
           <span className="text-white text-md font-bold">EMPERAL TRAVELS</span>
         </div>
 
@@ -81,15 +81,15 @@ const Navbar = () => {
           <Link to={'/my-list'} className="text-white hover:text-[#4CAF50] text-md font-bold">MY LIST</Link>
           <Link to={'/contact'} className="text-white hover:text-[#4CAF50] text-md font-bold">CONTACT</Link>
 
-          {/* Conditional Rendering for Login/Register or Profile Picture */}
+
           {user ? (
             <div className="relative flex items-center">
-              {/* Display User's Profile Picture */}
+
               <img 
                 src={user.photoURL} 
                 alt="Profile" 
                 className="h-8 w-8 rounded-full mr-2 cursor-pointer" 
-                onClick={toggleAvatarDropdown} // Toggle avatar dropdown on click
+                onClick={toggleAvatarDropdown} 
               />
               {isAvatarDropdownOpen && (
                 <div className="absolute right-0 bg-[#1a1a1a] rounded-lg shadow-lg mt-2 p-2 z-10">
@@ -117,7 +117,6 @@ const Navbar = () => {
         <div className="md:hidden bg-[#1a1a1a] p-4 rounded-[20px] mx-4 mt-2 flex flex-col space-y-4">
           <Link className="text-white hover:text-[#4CAF50] text-sm font-bold">HOME</Link>
           
-          {/* Dropdown for Tourist Spots in mobile view */}
           <div className="relative">
             <button 
               onClick={toggleDropdown} 
@@ -149,10 +148,9 @@ const Navbar = () => {
           <Link to={'/my-list'} className="text-white hover:text-[#4CAF50] text-sm font-bold">MY LIST</Link>
           <Link to={'/contact'} className="text-white hover:text-[#4CAF50] text-sm font-bold">CONTACT</Link>
 
-          {/* Conditional Rendering for Login/Register or Profile Picture in mobile view */}
           {user ? (
             <div className="relative flex items-center">
-              {/* Display User's Profile Picture */}
+
               <img 
                 src={user.photoURL} 
                 alt="Profile" 

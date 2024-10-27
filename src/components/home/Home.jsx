@@ -7,7 +7,7 @@ import TopDestinations from "./topDestination/TopDestinations";
 
 const Home = () => {
     return (
-        <div>
+        <div className="space-y-20">
             <Banner></Banner>
             <TopDestinations></TopDestinations>
             <Activities></Activities>
