@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { auth, db } from '../firebase/firebase.config'; // Ensure correct imports
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 
 const Profile = () => {
@@ -10,13 +10,11 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Fetch user data and bookmarked spots
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 try {
-                    // Fetch user data from Firestore
-                    const docRef = doc(db, 'users', user.uid); // Use user's UID to fetch their document
+                    const docRef = doc(db, 'users', user.uid);
                     const docSnap = await getDoc(docRef);
 
                     if (!docSnap.exists()) {
@@ -25,7 +23,7 @@ const Profile = () => {
 
                     const data = docSnap.data();
                     setUserData(data);
-                    setBookmarkedSpots(data.bookmarkedSpots || []); // Ensure bookmarkedSpots is initialized
+                    setBookmarkedSpots(data.bookmarkedSpots || []);
                 } catch (err) {
                     setError(err.message);
                     Swal.fire({
@@ -38,14 +36,48 @@ const Profile = () => {
                     setLoading(false);
                 }
             } else {
-                // No user is signed in
                 setLoading(false);
                 setError('No user is currently logged in.');
             }
         });
 
-        return () => unsubscribe(); // Cleanup subscription on unmount
+        return () => unsubscribe();
     }, []);
+
+    const handleBookSpot = async (spotId) => {
+        try {
+            const user = auth.currentUser;
+            if (!user) throw new Error('No user is currently logged in.');
+
+            const docRef = doc(db, 'users', user.uid);
+            await updateDoc(docRef, {
+                bookmarkedSpots: [...bookmarkedSpots, spotId]
+            });
+
+            setBookmarkedSpots(prev => [...prev, spotId]);
+            Swal.fire('Success!', 'Spot booked successfully.', 'success');
+        } catch (err) {
+            Swal.fire('Error!', err.message, 'error');
+        }
+    };
+
+    const handleRemoveBookmark = async (spotId) => {
+        try {
+            const user = auth.currentUser;
+            if (!user) throw new Error('No user is currently logged in.');
+
+            const updatedSpots = bookmarkedSpots.filter(spot => spot !== spotId);
+            const docRef = doc(db, 'users', user.uid);
+            await updateDoc(docRef, {
+                bookmarkedSpots: updatedSpots
+            });
+
+            setBookmarkedSpots(updatedSpots);
+            Swal.fire('Success!', 'Spot removed from bookmarks.', 'success');
+        } catch (err) {
+            Swal.fire('Error!', err.message, 'error');
+        }
+    };
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
@@ -70,8 +102,8 @@ const Profile = () => {
                             <h3 className="text-xl font-bold">{spot.tourists_spot_name}</h3>
                             <p><strong>Country:</strong> {spot.country_Name}</p>
                             <p><strong>Average Cost:</strong> ${spot.average_cost}</p>
-                            {/* Remove Bookmark Button */}
-                            <button className="mt-2 bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">
+
+                            <button onClick={() => handleRemoveBookmark(spot._id)} className="mt-2 bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">
                                 Remove Bookmark
                             </button>
                         </div>
@@ -80,6 +112,10 @@ const Profile = () => {
             ) : (
                 <p>No bookmarked spots found.</p>
             )}
+            
+            <button onClick={() => handleBookSpot('someSpotId')} className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-800">
+                Book a Spot
+            </button>
         </div>
     );
 };
